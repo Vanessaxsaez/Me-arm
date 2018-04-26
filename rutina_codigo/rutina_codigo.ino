@@ -34,30 +34,52 @@ void transrot(Servo servo, int rot_fin){
   }
 }
 
-void pos1(){
-  
-}
-void pos2(){
-  
-}
-void pos3(){
-  
-}
-
 void posInit(){
   transrot(ser1_base, 90); //cambiar la posición del ser1_base al ángulo 0
   transrot(ser3_pinza, 120);
   delay(500);
-  transrot(ser2_der, 120); //El cero esta extendido
   transrot(ser4_izq, 60); //El cero esta atras
+  transrot(ser2_der, 100); //El cero esta extendido
   delay(500);
 }
 
-void postFinal(){
+void tomarObjeto(){
+  //Tomar Objeto
+  delay(500);
+  transrot(ser3_pinza,60);
+  //transrot(ser3_pinza, 0); //Tomar a cosa
+  delay(500);
+}
 
-  transrot(ser4_izq, 60); //El cero esta atras
-  transrot(ser2_der, 90); //El cero esta extendido
+void pos1(){
+  
+  //Bajar 
+  transrot(ser1_base, 75); // Base
+  transrot(ser2_der, 40); // Extension
+  transrot(ser4_izq, 90); // Fuerza
+  delay(1000);
+}
+void pos2(){
+  
+  //Bajar 
+  transrot(ser1_base, 40); // Base
+  transrot(ser2_der, 50); // Extension
+  delay(1000);
+}
+void pos3(){
 
+  //Bajar 
+  transrot(ser1_base, 10); // Base
+  transrot(ser2_der, 40); // Extension
+  //transrot(ser4_izq, 90); // Fuerza
+  delay(1000);
+
+
+void transicion(){
+  
+  transrot(ser4_izq, 45); //El cero esta atras
+  delay(1000);
+  transrot(ser2_der, 120);
 }
 
 void loop(){
@@ -65,19 +87,50 @@ void loop(){
   //Pocisión inicial
   posInit();
 
-  //Bajar 
-  transrot(ser1_base, 75); // Base
-  transrot(ser2_der, 40); // Extension
-  transrot(ser4_izq, 90); // Fuerza
-  delay(1000);
+;
+  ////// Primera cajita //////
+  pos1();
+  tomarObjeto();
+  transrot(ser2_der, 120);
+  transrot(ser4_izq, 55); 
+  ////////////
+  transrot(ser4_izq, 90); // 
+  
+  transicion();
 
-    
-  //Tomar Objeto
-  delay(500);
-  transrot(ser3_pinza,60);
-  //transrot(ser3_pinza, 0); //Tomar a cosa
-  delay(500);
+  pos3();
+  transrot(ser4_izq, 70); // Bajar hasta el segundo nivel
+  transrot(ser3_pinza, 100); // Soltar objeto
+
+  
+  ///// Segunda cajita //////
+  transicion();
+  pos2();
+  transrot(ser4_izq, 70); // Fuerza
+  tomarObjeto();
+  transicion();
+  
+  pos3();
+  transrot(ser4_izq, 60); // Bajar hasta el segundo nivel
+  transrot(ser3_pinza, 100); // Soltar objeto
 
   //Resetear movimiento
+
+  /// Tercera cajita ////
+  transicion();
+  transrot(ser1_base, 40); // Base
+  transrot(ser2_der, 40); // Extension
+  transrot(ser4_izq, 90); // Fuerza
+  tomarObjeto();
+  transicion();
+
+
+  transrot(ser1_base, 10); // Base
+  delay(500);
+  transrot(ser2_der, 80); // Extension
+  delay(500);
+  transrot(ser4_izq, 70); // Fuerza
+  transrot(ser3_pinza, 100); // Soltar objeto  
+  
   postFinal();
 }
