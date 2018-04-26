@@ -73,7 +73,7 @@ void pos3(){
   transrot(ser2_der, 40); // Extension
   //transrot(ser4_izq, 90); // Fuerza
   delay(1000);
-
+}
 
 void transicion(){
   
@@ -87,7 +87,7 @@ void loop(){
   //Pocisión inicial
   posInit();
 
-;
+
   ////// Primera cajita //////
   pos1();
   tomarObjeto();
@@ -114,7 +114,7 @@ void loop(){
   transrot(ser4_izq, 60); // Bajar hasta el segundo nivel
   transrot(ser3_pinza, 100); // Soltar objeto
 
-  //Resetear movimiento
+
 
   /// Tercera cajita ////
   transicion();
@@ -127,10 +127,10 @@ void loop(){
 
   transrot(ser1_base, 10); // Base
   delay(500);
-  transrot(ser2_der, 80); // Extension
+  transrot(ser2_der, 80); // Extension <- aqui falta afinar
   delay(500);
-  transrot(ser4_izq, 70); // Fuerza
+  transrot(ser4_izq, 70); // Fuerza <- aqui falta afinar
   transrot(ser3_pinza, 100); // Soltar objeto  
   
-  postFinal();
+  //postFinal();
 }
