@@ -30,20 +30,22 @@ def obtenerZ(t):
 
 #	i 		tetai		di		ai 		alfai		
 #
-#	1		q1			L1		0		90
+#	1		q1			L1		0		-90
 #
-#	2		q2			0		L2		0
+#	2		q2-90		0		L2		0
 #
-#	3		Q3			0		L3		0
+#	3		q3			0		L3		0
 
 
 # L1 = 6 cm
 # L2 = 8 cm
 # L3 = 12,5c m
 
-A1 = matrizAi(math.radians(0), 6, 0, math.radians(90))
-A2 = matrizAi(math.radians(0), 0, 8, math.radians(0))
-A3 = matrizAi(math.radians(0), 0, 12.5, math.radians(0))
+#Si queremos calcular la posición inicial del elemento terminal
+
+A1 = matrizAi(math.radians(0), 6, 0, math.radians(-90))
+A2 = matrizAi(math.radians(-90), 0, 8, math.radians(0))
+A3 = matrizAi(math.radians(-90), 0, 12.5, math.radians(180))
 
 T = calcularT(A1,A2,A3)
 
